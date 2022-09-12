@@ -1,0 +1,22 @@
+ 
+
+ .prose {
+  --fg: #555;
+  --fg-deep: #222;
+  --fg-deeper: #000;
+  color: var(--fg);
+}
+
+html.dark .prose {
+  --fg: #bbb;
+  --fg-deep: #ddd;
+  --fg-deeper: #fff;
+}
+
+.prose a{
+  padding: 0 5px;
+  border-bottom:none;
+  font-weight: inherit;
+  text-decoration: none;
+ }
+ 
