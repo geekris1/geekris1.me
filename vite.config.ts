@@ -8,6 +8,8 @@ import Markdown from 'vite-plugin-react-markdown'
 import Shiki from 'markdown-it-shiki'
 import anchor from 'markdown-it-anchor'
 import TOC from 'markdown-it-table-of-contents'
+import matter from 'gray-matter'
+import fs from 'fs-extra'
 import { slugify } from './src/utils'
 export default defineConfig({
   resolve: {
@@ -35,12 +37,13 @@ export default defineConfig({
         transformerAttributifyJsx(),
       ],
     }),
-    Pages({
-      extensions: ['tsx', 'md'],
-    }),
     Markdown({
       wrapperClasses: 'prose m-auto',
       wrapperComponentPath: './src/component/Page',
+      wrapperComponent: {
+        BlogList: "./src/component/BlogList",
+        NoPartyForCaoDong: "./src/component/NoPartyForCaoDong"
+      },
       markdownItSetup(md) {
         md.use(Shiki, {
           theme: {
@@ -61,6 +64,25 @@ export default defineConfig({
           slugify,
         })
       }
+    }),
+    Pages({
+      extensions: ['tsx', 'md'],
+      extendRoute(routes) {
+        function addMeta(route) {
+          const path = resolve(__dirname, route.element.slice(1))
+          if (path.includes('blogs')) {
+            const md = fs.readFileSync(path, 'utf-8')
+            const { data } = matter(md)
+            route.meta = Object.assign(route.meta || {}, { frontmatter: data })
+          }
+        }
+        if (routes.children) {
+          routes.children.forEach(addMeta)
+        } else {
+          addMeta(routes)
+        }
+        return routes
+      },
     }),
     react({
       include: [/\.tsx$/, /\.md$/]

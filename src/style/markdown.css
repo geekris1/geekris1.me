@@ -45,9 +45,7 @@ html:not(.dark) .shiki-dark {
   transition: border 0.3s ease-in-out;
 }
 
-.prose a:hover {
-  border-bottom: 1px solid var(--fg);
-}
+ 
 
 .prose a code {
   color: inherit;
