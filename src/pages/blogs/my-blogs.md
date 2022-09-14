@@ -10,6 +10,8 @@ date: 2022-07-02 09:30:21
 
 博客灵感来源于 **Anthony Fu** Vue/Vite/Nuxt 核心成员,杰出的前端贡献者 https://antfu.me/.
 
+有部分也参考了：https://surewang.top/blogs/my-blog
+
 ## 为什么会有这个网站
 
 作为一名前端开发，一直以来都想有一个属于自己的，很酷的网站。我曾经尝试过使用 hexo 搭建博客，github pages 托管博客，尽管尝试了非常多的模板，但 hexo 出来的网站排版太过于复杂，出来的还是有点不太满意。

@@ -60,3 +60,15 @@ a:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--c-scrollbar-hover);
 }
+
+
+@media(max-width:1800px){
+ 
+  .caodong{
+    display: none;
+  }
+}  
+ 
+html:not(.dark) .caodong {
+  display: none;
+}

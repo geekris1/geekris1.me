@@ -25,7 +25,7 @@ export function handleBlogRoutes() {
       description: meta?.frontmatter.description,
       tag: meta?.frontmatter.tag || [],
     }
-  }).filter(Boolean).sort((a: any, b: any) => +new Date(b.date) - +new Date(a.date))
+  }).filter(Boolean).sort((a: any, b: any) => +new Date(b.date) - +new Date(a.date)) as BlogRoutes[]
 
 }
 
