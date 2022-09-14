@@ -1,5 +1,5 @@
 ---
-title: pnpm的简单使用
+title: pnpm初上手
 description:
 date: 2022-09-12 09:30:21
 ---
