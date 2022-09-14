@@ -4,6 +4,16 @@
       "source": "/(.*)",
       "destination": "/index.html",
       "statusCode": 200
+    },
+    {
+      "source": "/*",
+      "destination": "/index.html",
+      "statusCode": 200
+    },
+    {
+      "source": "/links",
+      "destination": "/index.html",
+      "statusCode": 200
     }
   ]
 }
