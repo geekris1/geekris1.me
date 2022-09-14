@@ -19,6 +19,7 @@ links: [
  ## 关于我
 - **Email:**  geekris1@foxmail.com</br> 
 - **Github:** [https://github.com/geekris1](https://github.com/geekris1)
+- **Blog:** [https://github.com/geekris1](https://github.com/geekris1/geekris1.me)
 
 ## 友情链接
 
