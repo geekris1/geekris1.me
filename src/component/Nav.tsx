@@ -30,10 +30,13 @@ function Nav() {
         <div></div>
         <div className="right">
           <Link to="/blogs" title="博客">
-            <div className="i-carbon:blog" />
+            <i className="i-carbon:blog" />
           </Link>
           <Link to="/notes" title="笔记">
-            <div className="i-gg:notes" />
+            <i className="i-gg:notes" />
+          </Link>
+          <Link to="/links">
+            <i className="i-ri:link" />
           </Link>
           <a target="_blank" href="https://github.com/geekris1" title="github">
             <div i-uil-github-alt />

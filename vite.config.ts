@@ -42,7 +42,8 @@ export default defineConfig({
       wrapperComponentPath: './src/component/Page',
       wrapperComponent: {
         BlogList: "./src/component/BlogList",
-        NoPartyForCaoDong: "./src/component/NoPartyForCaoDong"
+        NoPartyForCaoDong: "./src/component/NoPartyForCaoDong",
+        Link: './src/component/Link'
       },
       markdownItSetup(md) {
         md.use(Shiki, {

@@ -20,6 +20,9 @@ header.prose .nav{
   display: flex;
   justify-content: space-between;;
 }
+.prose .nav a{
+  border-bottom: 0;
+}
 .prose a {
   color: var(--fg-deeper);
   text-decoration: none;
