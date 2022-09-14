@@ -11,6 +11,15 @@
   margin-top: 1.2em;
   margin-bottom: 1.2em;
 }
+
+header.prose{
+  max-width: 100%;
+}
+header.prose .nav{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;;
+}
 .prose a {
   color: var(--fg-deeper);
   text-decoration: none;

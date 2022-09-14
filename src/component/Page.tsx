@@ -11,6 +11,6 @@ function Page(props: Props) {
   if (importComponentName.includes("BlogList")) {
     return children;
   }
-  return <div className="prose m-auto">{children}</div>;
+  return <div className="prose m-auto p-8">{children}</div>;
 }
 export default Page;

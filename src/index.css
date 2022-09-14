@@ -62,12 +62,17 @@ a:hover {
 }
 
 
-@media(max-width:1800px){
- 
+@media(max-width:1750px){
+  .caodong{
+    display: none;
+  }
+} 
+@media(max-height:700px){
   .caodong{
     display: none;
   }
 }  
+  
  
 html:not(.dark) .caodong {
   display: none;
