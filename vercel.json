@@ -2,7 +2,13 @@
   "redirects": [
     {
       "source": "/*",
-      "destination": "/index.html"
+      "destination": "/index.html",
+      "statusCode": 200
+    },
+    {
+      "source": "/links",
+      "destination": "/index.html",
+      "statusCode": 200
     }
   ]
 }
