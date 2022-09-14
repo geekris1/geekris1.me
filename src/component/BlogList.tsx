@@ -9,7 +9,7 @@ function BlogList() {
   const blogs = useMemo(handleBlogRoutes, []);
   console.log(blogs);
   return (
-    <div className="prose m-auto p-8">
+    <div className="prose m-auto p-8 lt-md-p-l-0 lt-md-p-r-0">
       {blogs!.map((blog) => {
         return (
           <div mb-20px key={blog.path}>

@@ -13,7 +13,7 @@ function Page(props: Props) {
   }
   return (
     <PropsContext.Provider value={props}>
-      <div className="prose m-auto p-8">{children}</div>
+      <div className="prose m-auto p-8 lt-md-p-l-0 lt-md-p-r-0">{children}</div>
     </PropsContext.Provider>
   );
 }
