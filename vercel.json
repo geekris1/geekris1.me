@@ -4,5 +4,11 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/org",
+      "destination": "https://peisong.meituan.com/app/riderRecruitmentFusion/index"
+    }
   ]
 }
