@@ -4,7 +4,7 @@ description:
 date: 2022-09-11 09:30:21
 ---
 [[toc]]
-## pnpm 初上手
+# pnpm 初上手
 
 最近看 vue 用了 pnpm 来做 monorepo。所有我们简单看看是如何做的
 
