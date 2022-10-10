@@ -1,0 +1,14 @@
+.event-delegation{
+  --bg1:#121212;
+  --bg2:#212121;
+ 
+}
+.bg1{
+  background-color: var(--bg1);
+}
+.bg2{
+  background-color: var(--bg2);
+}
+
+html.dark{
+ }
