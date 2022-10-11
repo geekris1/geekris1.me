@@ -7,7 +7,6 @@ const pathBase = "/blogs/";
 
 function BlogList() {
   const blogs = useMemo(handleBlogRoutes, []);
-  console.log(blogs);
   return (
     <div className="prose m-auto p-8 lt-md-p-l-0 lt-md-p-r-0">
       {blogs!.map((blog) => {

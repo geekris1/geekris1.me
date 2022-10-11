@@ -9,7 +9,6 @@ function EventDelegation(props: Props) {
   const parent = useRef<HTMLDivElement>();
   const children = useRef<HTMLDivElement>();
   useEffect(() => {
-    console.log(props);
     addEvent(props.event);
   }, []);
 
@@ -31,26 +30,44 @@ function EventDelegation(props: Props) {
     </div>
   );
 
-  function addEvent(event: string) {
+  function parentAddClick() {
     parent.current?.addEventListener("click", () => {
       listData.current.push("parent");
       updateList([...listData.current]);
     });
+  }
+  function parentAddCaptureClick() {
+    parent.current?.addEventListener(
+      "click",
+      () => {
+        listData.current.push("parent-capture");
+        updateList([...listData.current]);
+      },
+      { capture: true }
+    );
+  }
+  function childrenAddClick() {
     children.current?.addEventListener("click", () => {
       listData.current.push("children");
-      console.log(listData);
       updateList([...listData.current]);
     });
-    if (event === "2") {
-      parent.current?.addEventListener(
-        "click",
-        () => {
-          listData.current.push("parent-capture");
-          updateList([...listData.current]);
-        },
-        { capture: true }
-      );
-    }
+  }
+  function childrenAddCaptureClick() {
+    children.current?.addEventListener(
+      "click",
+      () => {
+        listData.current.push("children-capture");
+        updateList([...listData.current]);
+      },
+      { capture: true }
+    );
+  }
+  function addEvent(event: string) {
+    let e: Record<string, Function[]> = {
+      "1": [parentAddClick, childrenAddClick],
+      "2": [parentAddClick, childrenAddClick, parentAddCaptureClick],
+    };
+    e[event].map((item) => item());
   }
 }
 
