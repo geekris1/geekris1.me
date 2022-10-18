@@ -50,7 +50,9 @@ Function.prototype.call1 = function(context){
   }
   context =Object(context)
   context[_KEY] = this;
-  return eval('context[_KEY](' + args + ')')
+  let result =  eval('context[_KEY](' + args + ')')
+  delete context[_KEY]
+  return result
 }
 ```
 上面一个call函数就实现完了。用eval主要是为了将arguments展开。也可以用换成展开运算符`context[_KEY](...args)`。
@@ -90,7 +92,9 @@ call修改后的代码如下
     context = Object(context);
     const _KEY = Symbol.for("CALL1_KEY");
     context[_KEY] = this;
-    return eval("context[_KEY](" + args + ")");
+    let result =  eval("context[_KEY](" + args + ")");
+    delete context[_KEY]
+    return result
   };
 ```
 
@@ -114,13 +118,18 @@ Function.prototype.apply1 = function (context, arr) {
   context = Object(context);
   const _KEY = Symbol.for("CALL1_KEY");
   context[_KEY] = this;
+  let result;
   if (!arr) {
-    return context[_KEY]()
+    result = context[_KEY]()
+
+  } else {
+    let args = [];
+    for (let i = 0; i < arr.length; i++) {
+      args.push('arr[' + i + ']');
+    }
+    result = eval("context[_KEY](" + args + ")");
   }
-  let args = [];
-  for (let i = 0; i < arr.length; i++) {
-    args.push('arr[' + i + ']');
-  }
-  return eval("context[_KEY](" + args + ")");
+  delete context[_KEY]
+  return result
 };
 ```
