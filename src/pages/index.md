@@ -9,7 +9,8 @@
 
 这个网站主要用来记录自己的学习，后面也会有一些好玩的东西。</br></br>
 在这个越来越卷的行业，只有不断的提升自己，才能跨越年龄的鸿沟。
-</br>
+</br></br>
+此博客的源码:[https://github.com/geekris1/geekris1.me](https://github.com/geekris1/geekris1.me)</br>
 </br>
 :-) 
 <NoPartyForCaoDong />

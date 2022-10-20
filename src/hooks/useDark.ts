@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import type { MutableRefObject } from 'react'
-
 export function useDark(): [Boolean, () => void]
 export function useDark() {
   const html = window.document.querySelector("html")!
@@ -12,7 +11,6 @@ export function useDark() {
       html.className = 'dark'
     }
     setDark(!isDark)
-
   }
   return [isDark, updateDark]
 }
