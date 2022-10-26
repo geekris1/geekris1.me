@@ -331,3 +331,6 @@ pnpm prepare
 npx husky add .husky/pre-commit "pnpm tiny"
 ```
 然后我们就可以提交代码，在commit后就会发现在执行压缩图片的脚本了
+<img  src='/tiny/commit.jpg'/>
+从结果可以看出整个图片体积压缩50%左右
+<img  src='/tiny/compare.png'/>
