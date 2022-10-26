@@ -6,5 +6,6 @@
   "public/logo-dark.png": true,
   "public/logo.png": true,
   "public/tiny/commit.jpg": true,
-  "public/tiny/compare.png": true
+  "public/tiny/compare.png": true,
+  "public/commit.jpg": true
 }
