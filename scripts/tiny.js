@@ -6,9 +6,8 @@ import ora from 'ora'
 import tinify from 'tinify'
 import { cwd } from 'node:process'
 
-const RECORD_CACHE_FULL_FILE = 'tiny.cache.json'
-const RECORD_PATH = path.join(cwd(), RECORD_CACHE_FULL_FILE)
-const ENTRY_PATH = 'public'
+const RECORD_FILE = 'tiny.cache.json'
+const ENTRY_FILE = 'public'
 const KEY_FILE = 'tiny.key.json'
 let cache = {}
 
@@ -16,7 +15,7 @@ async function init() {
     const key = await readFile(KEY_FILE)
     tinify.key = key.key
     cache = await loadCache()
-    let file = await getFile(ENTRY_PATH);
+    let file = await getFile(ENTRY_FILE);
     for (let f of file) {
         await handleImage(f)
     }
@@ -25,21 +24,20 @@ async function init() {
 }
 
 async function loadCache() {
-    const haveCacheFIle = await isFile(RECORD_PATH)
+    const haveCacheFIle = await isFile(RECORD_FILE)
     if (haveCacheFIle) {
-        const result = await readFile(RECORD_PATH);
+        const result = await readFile(RECORD_FILE);
         return result;
     } else {
         return {}
     }
 }
 async function isFile(p) {
-    let result = await haveCache(p)
-    return result && result.isFile()
-}
-async function haveCache(p) {
+    if (!path.isAbsolute(p)) {
+        p = path.join(cwd(), p)
+    }
     let result = await fs.stat(p).catch(() => false)
-    return result
+    return result && result.isFile()
 }
 async function handleImage(p) {
     if (cache[p]) return;
@@ -58,19 +56,15 @@ async function getFile(path) {
 }
 
 async function readFile(p) {
-    const flag = path.isAbsolute(p)
-    if (!flag) {
+    if (!path.isAbsolute(p)) {
         p = path.join(cwd(), p)
     }
     const fileData = await fs.readFile(p, 'utf-8')
-    const result = JSON.parse(fileData)
-    return result;
-
+    return JSON.parse(fileData)
 }
 async function saveCache() {
-    await fs.writeFile(RECORD_PATH, JSON.stringify(cache, null, 2))
+    await fs.writeFile(RECORD_FILE, JSON.stringify(cache, null, 2))
     console.log("good dog!")
-
 }
 
 await init()
