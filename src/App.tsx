@@ -14,3 +14,11 @@ function App() {
 }
 
 export default App;
+
+type Tuple<TItem, TLength extends number> = [TItem, ...TItem[]] & {
+  length: TLength;
+};
+
+type TupleTest = Tuple<number, 3>;
+
+let a: TupleTest = [1, 2, 3];
