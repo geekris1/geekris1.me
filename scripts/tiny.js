@@ -1,36 +1,46 @@
 #!/usr/bin/env node
 import path from 'path'
 import fg from 'fast-glob';
-import fs from 'fs'
-import { loadConfig } from 'unconfig';
+import fs from 'fs/promises'
 import ora from 'ora'
 import tinify from 'tinify'
 import { cwd } from 'node:process'
 
-const RECORD_CACHE_FILE = 'tiny.cache'
 const RECORD_CACHE_FULL_FILE = 'tiny.cache.json'
-const TINY_CONFIG = 'tiny.config'
-
+const RECORD_PATH = path.join(cwd(), RECORD_CACHE_FULL_FILE)
+const ENTRY_PATH = 'public'
+const KEY_FILE = 'tiny.key.json'
 let cache = {}
 
 async function init() {
-    const { key, entry } = await loadConfigFile(TINY_CONFIG);
-    if (!key) error(0);
-    if (!Array.isArray(entry)) error(1)
-    tinify.key = key;
-    let config = await loadConfigFile(RECORD_CACHE_FILE);
-    console.log(config)
-    cache = config
-    for (let key in entry) {
-        let entryPath = entry[key];
-        let file = await getFile(entryPath);
-        for (let f in file) {
-            await handleImage(file[f])
-        }
+    const key = await readFile(KEY_FILE)
+    tinify.key = key.key
+    cache = await loadCache()
+    let file = await getFile(ENTRY_PATH);
+    for (let f of file) {
+        await handleImage(f)
     }
-    saveCache()
+    await saveCache()
+    process.exit(0)
 }
 
+async function loadCache() {
+    const haveCacheFIle = await isFile(RECORD_PATH)
+    if (haveCacheFIle) {
+        const result = await readFile(RECORD_PATH);
+        return result;
+    } else {
+        return {}
+    }
+}
+async function isFile(p) {
+    let result = await haveCache(p)
+    return result && result.isFile()
+}
+async function haveCache(p) {
+    let result = await fs.stat(p).catch(() => false)
+    return result
+}
 async function handleImage(p) {
     if (cache[p]) return;
     const spinner = ora({ text: `loading ${p}`, color: "yellow" }).start()
@@ -47,25 +57,20 @@ async function getFile(path) {
     return await fg(path)
 }
 
-async function loadConfigFile(path) {
-    const { config } = await loadConfig({
-        sources: [{ files: path }]
-    })
-    return config || {}
-}
-
-function saveCache() {
-    fs.writeFileSync(path.join(cwd(), RECORD_CACHE_FULL_FILE), JSON.stringify(cache, null, 2))
-    console.log('good dog!')
-}
-
-function error(code) {
-    let errorMessage = {
-        0: "Please add the key field to the tiny.config file",
-        1: "entry must be an array"
+async function readFile(p) {
+    const flag = path.isAbsolute(p)
+    if (!flag) {
+        p = path.join(cwd(), p)
     }
-    console.error(errorMessage[code])
-    process.exit(1)
+    const fileData = await fs.readFile(p, 'utf-8')
+    const result = JSON.parse(fileData)
+    return result;
+
+}
+async function saveCache() {
+    await fs.writeFile(RECORD_PATH, JSON.stringify(cache, null, 2))
+    console.log("good dog!")
+
 }
 
-init()
+await init()
