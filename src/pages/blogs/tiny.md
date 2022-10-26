@@ -29,7 +29,7 @@ pnpm install ora tinify fast-glob husky -S
 
 ## Step 2 - 完成压缩脚本
 ### 添加对应文件和命令
-我们现在跟目录新建一个`scripts`文件夹，在里面新建一个`tiny.js`,然后我们加上这样的代码
+我们先在跟目录新建一个`scripts`文件夹，在里面新建一个`tiny.js`,然后我们加上这样的代码
 ```js
 #!/usr/bin/env node
 console.log("go")
