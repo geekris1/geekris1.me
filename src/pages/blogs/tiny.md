@@ -328,7 +328,8 @@ pnpm prepare
 然后我们再添加pre-commit
 ```js
 // 这里tiny指你前面在scripts里添加的脚本key
-npx husky add .husky/pre-commit "pnpm tiny"
+// && git add . 代表前面压缩完后再执行git add .
+npx husky add .husky/pre-commit "pnpm tiny && git add ."
 ```
 然后我们就可以提交代码，在commit后就会发现在执行压缩图片的脚本了
 <img  src='/tiny/commit.jpg'/>
