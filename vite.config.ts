@@ -11,7 +11,6 @@ import TOC from 'markdown-it-table-of-contents'
 import matter from 'gray-matter'
 import fs from 'fs-extra'
 import { slugify } from './src/utils'
-import { getComponent } from './src/utils/auto'
 export default defineConfig({
   resolve: {
     alias: [
@@ -41,7 +40,7 @@ export default defineConfig({
     Markdown({
       wrapperClasses: 'prose m-auto',
       wrapperComponentPath: './src/component/Page',
-      wrapperComponent: await getComponent(),
+      wrapperComponent: true,
       markdownItSetup(md) {
         md.use(Shiki, {
           theme: {
