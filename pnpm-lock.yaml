@@ -28,7 +28,7 @@ specifiers:
   unocss: ^0.45.15
   vite: ^3.1.0
   vite-plugin-pages: ^0.26.0
-  vite-plugin-react-markdown: 0.2.4
+  vite-plugin-react-markdown: 0.2.5
 
 dependencies:
   '@iconify/json': 2.1.106
@@ -60,7 +60,7 @@ devDependencies:
   unocss: 0.45.21_vite@3.1.0
   vite: 3.1.0
   vite-plugin-pages: 0.26.0_vite@3.1.0
-  vite-plugin-react-markdown: 0.2.4_vite@3.1.0
+  vite-plugin-react-markdown: 0.2.5_vite@3.1.0
 
 packages:
 
@@ -2475,8 +2475,8 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-react-markdown/0.2.4_vite@3.1.0:
-    resolution: {integrity: sha512-eYKV3at/nhNCJABb0lIN8SOASAE7Ea9h9ZpHQH2juMhvCIrfMtbJxFoO1nYtaNlzoJcpweatsbtcPxDXDyphVA==}
+  /vite-plugin-react-markdown/0.2.5_vite@3.1.0:
+    resolution: {integrity: sha512-AlcYc3/BK/zp6Pv5oISb/PZTG3juKTR61UVtnahDIoKm4QOmEili/oVzPbTggSI7/GL2VEsSws8uIb/bPTR1Ow==}
     peerDependencies:
       vite: ^2.0.0 || ^3.0.0-0
     dependencies:
