@@ -12,6 +12,7 @@ import matter from 'gray-matter'
 import fs from 'fs-extra'
 import { slugify } from './src/utils'
 export default defineConfig({
+  server: { open: true },
   resolve: {
     alias: [
       { find: '@/', replacement: `${resolve(__dirname, 'src')}/` },

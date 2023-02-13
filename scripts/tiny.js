@@ -13,6 +13,7 @@ let cache = {}
 
 async function init() {
     const key = await readFile(KEY_FILE)
+    console.log(key.key)
     tinify.key = key.key
     cache = await loadCache()
     let file = await getFile(ENTRY_FILE);
@@ -43,10 +44,18 @@ async function handleImage(p) {
     if (cache[p]) return;
     const spinner = ora({ text: `loading ${p}`, color: "yellow" }).start()
     const absolutePath = path.join(cwd(), p)
-    let source = tinify.fromFile(absolutePath)
-    await source.toFile(absolutePath)
-    cache[p] = true
-    spinner.succeed()
+    try {
+        let source = tinify.fromFile(absolutePath)
+        await source.toFile(absolutePath)
+        cache[p] = true
+        spinner.succeed()
+    } catch (e) {
+        console.log("");
+        console.log(e);
+        process.exit(1)
+    }
+
+
 }
 
 async function getFile(path) {
