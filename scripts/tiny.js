@@ -45,15 +45,6 @@ async function handleImage(p) {
     const spinner = ora({ text: `loading ${p}`, color: "yellow" }).start()
     const absolutePath = path.join(cwd(), p)
     try {
-        await fs.access(p, fs.R_OK)
-        console.log("")
-        console.log("可读")
-        await fs.access(p, fs.W_OK)
-        console.log("可写")
-    } catch (e) {
-        console.log(e)
-    }
-    try {
         let source = tinify.fromFile(absolutePath)
         await source.toFile(absolutePath)
         cache[p] = true
@@ -86,3 +77,5 @@ async function saveCache() {
 }
 
 await init()
+
+
