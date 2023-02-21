@@ -11,6 +11,7 @@ import "./index.css";
 import "./style/nav.css";
 import "./style/markdown.css";
 import "./style/prose.css";
+import "./style/zustand.css";
 dayjs.extend(utc);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

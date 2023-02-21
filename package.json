@@ -14,9 +14,11 @@
     "@iconify/json": "^2.1.105",
     "dayjs": "^1.11.5",
     "echarts": "^5.4.1",
+    "geekris1.me": "link:",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "6"
+    "react-router-dom": "6",
+    "zustand": "^4.3.3"
   },
   "devDependencies": {
     "@types/diacritics": "^1.3.1",

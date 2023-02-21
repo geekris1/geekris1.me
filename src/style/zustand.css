@@ -1,0 +1,34 @@
+
+
+.zustand{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center
+}
+
+.zustand button {
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  height:3rem;
+  width:5rem;
+  color:#fff;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+.zustand button:hover {
+  border-color: #646cff;
+}
+
+.zustand button:focus,
+.zustand button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
