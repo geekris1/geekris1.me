@@ -5,8 +5,13 @@ links: [
   desc: hard hard and try again. ,
   avatar: https://avatars.githubusercontent.com/u/67545604?v=4 ,
   link: https://surewang.top ,
+  },
+  {
+  name: Sun .P.M ,
+  desc: 一个小小网站，记录为学习付出努力而不该忘记的知识。 ,
+  avatar: https://blog.fassr.com/images/logo.png ,
+  link: https://blog.fassr.com ,
   }
-
 ]
 ---
   <!-- {
